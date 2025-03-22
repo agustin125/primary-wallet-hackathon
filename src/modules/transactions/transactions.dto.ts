@@ -15,11 +15,14 @@ export class WebhookTransferDto {
   @ApiProperty({ example: 'text', description: 'Type of the message' })
   message_type?: string;
 
-  @ApiProperty({ example: '2 @tim zksync', description: 'Text content of the message' })
+  @ApiProperty({ example: '3D000000604C09C0', description: 'messageId of the message' })
+  messageId: string;
+
+  @ApiProperty({ example: '2 #tim zksync', description: 'Text content of the message' })
   text: string;
 
   @ApiProperty({ example: '54123456789', description: 'Sender phone number' })
-  from: string;
+  msisdn: string;
 
   @ApiProperty({ example: '12077695744', description: 'Recipient phone number' })
   to: string;

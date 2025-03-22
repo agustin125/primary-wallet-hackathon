@@ -5,6 +5,7 @@ import { StellarProvider } from '../../providers/stellar.provider';
 import { ZkSyncProvider } from '../../providers/zksync.provider';
 import { MantleProvider } from '../../providers/mantle.provider';
 import { BlockchainProviderResolver } from '../../providers/provider-resolver';
+import { SmsService } from '../sms/sms.service';
 
 @Module({
   controllers: [TransactionsController],
@@ -14,6 +15,7 @@ import { BlockchainProviderResolver } from '../../providers/provider-resolver';
     ZkSyncProvider,
     MantleProvider,
     BlockchainProviderResolver,
+    SmsService,
   ],
 })
 export class TransactionsModule {}

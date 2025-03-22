@@ -41,6 +41,21 @@ export class BlockchainProviderResolver {
       default:
         throw new Error(`Unsupported network: ${value}`);
     }
+  } 
+
+  getExplorerTxUrl(txHash: string, network: BlockchainProvider): string {
+    switch (network) {
+      case BlockchainProvider.ZkSync:
+        return `https://sepolia.explorer.zksync.io/tx/${txHash}`;
+      case BlockchainProvider.Stellar:
+        return `https://testnet.stellarscan.io/transaction/${txHash}`;
+      case BlockchainProvider.Mantle:
+        return `https://explorer.testnet.mantle.xyz/tx/${txHash}`;
+      default:
+        throw new Error(`Unsupported network for explorer URL: ${network}`);
+    }
   }
+
+
 }
   
