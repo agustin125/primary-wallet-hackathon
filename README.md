@@ -21,20 +21,20 @@ WalletApp is a powerful open-source decentralized wallet designed for accessibil
 - Incoming SMS messages are parsed and routed to appropriate services.
 
 
-# Install project
+## 📦  Install project
 
 `npm install`
 
-# Configure Environment Variables
+## 📄 Configure Environment Variables
 
 Create a .env file in the root directory of your project. You can use the provided .env.example file as a template.
 
 `cp .env.example .env`
 
-## Run project 
+## 🏃 Run project 
 
 `npm run start`
 
-## Run tests
+## 🪲 Run tests
 
 `npm run test`

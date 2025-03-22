@@ -17,7 +17,7 @@ export class SmsService {
     this.vonage = new Vonage(credentials);
   }
 
-  async sendSms(to: string, message: string): Promise<void> {
+  async sendNotificationSms(to: string, message: string): Promise<void> {
     await this.vonage.sms.send({
       to,
       from: process.env.VONAGE_SENDER || 'WalletApp',
@@ -27,6 +27,6 @@ export class SmsService {
 
   async receiveSms(from: string, text: string): Promise<void> {
     console.log(`📩 SMS received from ${from}: ${text}`);
-    await this.sendSms(from, 'Your message has been received ✅');
+    await this.sendNotificationSms(from, 'Your message has been received ✅');
   }
 }

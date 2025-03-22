@@ -9,10 +9,10 @@ export class SmsController {
   constructor(private readonly smsService: SmsService) {}
 
   @Post('send')
-  @ApiOperation({ summary: 'Send an SMS' })
+  @ApiOperation({ summary: 'Send an Notification SMS' })
   @ApiBody({ type: SendSmsDto })
-  async sendSms(@Body() body: SendSmsDto): Promise<void> {
-    return this.smsService.sendSms(body.to, body.message);
+  async sendNotificationSms(@Body() body: SendSmsDto): Promise<void> {
+    return this.smsService.sendNotificationSms(body.to, body.message);
   }
 
   @Post('receive')
