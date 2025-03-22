@@ -8,6 +8,7 @@ async function bootstrap() {
 
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
+  app.setGlobalPrefix('primary-wallet-hackathon');
 
   // Swagger configuration
   const config = new DocumentBuilder()
@@ -17,10 +18,10 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('primary-wallet-hackathon/api', app, document);
 
-  const PORT = process.env.PORT || 3000;
+  const PORT = process.env.PORT || 3010;
   await app.listen(PORT);
-  console.log(`🚀 Server running on http://localhost:${PORT}/api`);
+  console.log(`🚀 Server running on http://localhost:${PORT}/primary-wallet-hackathon/api`);
 }
 bootstrap();
