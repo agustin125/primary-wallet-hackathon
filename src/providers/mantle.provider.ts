@@ -1,9 +1,6 @@
-// 📁 src/modules/transactions/providers/mantle.provider.ts
 import { Injectable } from '@nestjs/common';
 import { ethers } from 'ethers';
-import * as dotenv from 'dotenv';
-
-dotenv.config();
+import { MANTLE_CONFIG } from '../config/mantle.config';
 
 @Injectable()
 export class MantleProvider {
@@ -11,18 +8,16 @@ export class MantleProvider {
   private wallet: ethers.Wallet;
 
   constructor() {
-    const mantleRpcUrl = process.env.MANTLE_RPC_URL || 'https://rpc.mantle.xyz';
-    this.provider = new ethers.providers.JsonRpcProvider(mantleRpcUrl);
-
-    const privateKey = process.env.MANTLE_PRIVATE_KEY;
+ /*   this.provider = new ethers.providers.JsonRpcProvider(MANTLE_CONFIG.providerUrl);
+    const privateKey = MANTLE_CONFIG.privateKey;
     if (!privateKey) {
       throw new Error('MANTLE_PRIVATE_KEY is not set in environment variables');
     }
-    this.wallet = new ethers.Wallet(privateKey, this.provider);
+    this.wallet = new ethers.Wallet(privateKey, this.provider);*/
   }
 
   async transferToken(amount: string, tokenAddress: string, to: string): Promise<string> {
-    const erc20Abi = [
+ /*   const erc20Abi = [
       'function transfer(address to, uint amount) returns (bool)',
     ];
     const tokenContract = new ethers.Contract(tokenAddress, erc20Abi, this.wallet);
@@ -33,6 +28,7 @@ export class MantleProvider {
     const tx = await tokenContract.transfer(to, parsedAmount);
     await tx.wait();
 
-    return tx.hash;
+    return tx.hash;*/
+    return "";
   }
 }

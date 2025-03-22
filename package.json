@@ -1,6 +1,5 @@
 {
   "name": "stellar_tx_by_sms",
-  "type": "module",
   "dependencies": {
     "@nestjs/axios": "^4.0.0",
     "@nestjs/common": "^11.0.12",

@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Keypair, Horizon, Networks, TransactionBuilder, Operation, Asset } from 'stellar-sdk';
+import { Horizon, Networks,  Operation, Asset, TransactionBuilder } from 'stellar-sdk';
+import { Keypair} from '@stellar/typescript-wallet-sdk';
 import { STELLAR_CONFIG } from '../config/stellar.config';
 
 @Injectable()
@@ -8,8 +9,8 @@ export class StellarProvider {
   private keypair: Keypair;
 
   constructor() {
-    this.server = new Horizon.Server(STELLAR_CONFIG.horizonUrl);
-    this.keypair = Keypair.fromSecret(STELLAR_CONFIG.secretKey);
+    this.server = new Horizon.Server(STELLAR_CONFIG.providerUrl);
+    this.keypair = Keypair.fromSecret(STELLAR_CONFIG.privateKey);
   }
 
   async transferToken(amount: string, assetCode: string, destination: string): Promise<string> {

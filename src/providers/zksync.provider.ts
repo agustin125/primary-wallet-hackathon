@@ -1,9 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as zksync from 'zksync-web3';
 import { Wallet, utils } from 'ethers';
-import * as dotenv from 'dotenv';
-
-dotenv.config();
+import { ZKSYYNC_CONFIG } from '../config/zksync.config';
 
 @Injectable()
 export class ZkSyncProvider {
@@ -12,13 +10,10 @@ export class ZkSyncProvider {
   private zkWallet: zksync.Wallet;
 
   constructor() {
-    const rpcUrl = process.env.ZKSYNC_RPC_URL || 'https://testnet.era.zksync.dev';
-    this.zkSyncProvider = new zksync.Provider(rpcUrl);
-
-    this.ethWallet = new Wallet(process.env.ZKSYNC_PRIVATE_KEY);
+    this.zkSyncProvider = new zksync.Provider(ZKSYYNC_CONFIG.providerUrl);
+    this.ethWallet = new Wallet(ZKSYYNC_CONFIG.privateKey);
     this.zkWallet = new zksync.Wallet(this.ethWallet.privateKey, this.zkSyncProvider);
   }
-
   async transferToken(amount: string, tokenAddress: string, to: string): Promise<string> {
     const parsedAmount = utils.parseUnits(amount, 18); // default 18 decimals
 

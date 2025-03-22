@@ -1,5 +1,5 @@
 export const STELLAR_CONFIG = {
   network: process.env.STELLAR_NETWORK || 'testnet',
-  horizonUrl: process.env.STELLAR_NETWORK || 'https://horizon-testnet.stellar.org',
-  secretKey: process.env.STELLAR_SECRET_KEY,
+  providerUrl: process.env.STELLAR_PROVIDER || 'https://horizon-testnet.stellar.org',
+  privateKey: process.env.STELLAR_PRIVATE_KEY,
 };
