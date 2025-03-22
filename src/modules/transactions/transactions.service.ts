@@ -12,7 +12,7 @@ export class TransactionsService {
     amount: string,
     assetCode: string,
     destination: string,
-    network: BlockchainProvider = BlockchainProvider.Stellar,
+    network: BlockchainProvider = BlockchainProvider.ZkSync,
   ): Promise<string> {
     const provider = this.providerResolver.resolve(network);
     return provider.transferToken(amount, assetCode, destination);

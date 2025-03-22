@@ -14,12 +14,13 @@ export class ZkSyncProvider {
     this.ethWallet = new Wallet(ZKSYYNC_CONFIG.privateKey);
     this.zkWallet = new zksync.Wallet(this.ethWallet.privateKey, this.zkSyncProvider);
   }
-  async transferToken(amount: string, tokenAddress: string, to: string): Promise<string> {
-    const parsedAmount = utils.parseUnits(amount, 18); // default 18 decimals
+  async transferToken(amount: string, tokenAddress: string, toRaw: string): Promise<string> {
+    const parsedAmount = utils.parseUnits(amount, ZKSYYNC_CONFIG.tokenDecimals);
 
+    const  to = (toRaw == ZKSYYNC_CONFIG.defautUserNameTo ? ZKSYYNC_CONFIG.defaultUserAddressTo : toRaw)
     const tx = await this.zkWallet.transfer({
       to,
-      token: tokenAddress,
+      token: ZKSYYNC_CONFIG.tokenAddress,
       amount: parsedAmount,
     });
 
