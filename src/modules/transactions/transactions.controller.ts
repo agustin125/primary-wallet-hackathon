@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Inject } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { TransactionsService } from './transactions.service';
 import { ApiTags, ApiOperation, ApiBody } from '@nestjs/swagger';
 import { TransferTokenDto } from './transactions.dto';
@@ -19,6 +19,7 @@ export class TransactionsController {
 
   @Post('webhook-transfer')
   @ApiOperation({ summary: 'Transfer tokens from SMS webhook' })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async handleSmsWebhook(@Body() body: any): Promise<string> {
     const { text } = body;
 
