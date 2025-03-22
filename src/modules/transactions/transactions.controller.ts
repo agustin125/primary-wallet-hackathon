@@ -44,7 +44,7 @@ export class TransactionsController {
 
     console.log(`Received transfer request: amount=${amount}, recipient=${recipientRaw}, type=${recipientType}, network=${network}`);
 
-    const txHash = await  this.transactionsService.transferToken(amount, 'USDT', recipientRaw, network);
+    const txHash = await  this.transactionsService.transferToken(amount, undefined, recipientRaw, network);
     const explorerUrl = this.providerResolver.getExplorerTxUrl(txHash, network);
     const message = `Your transaction was confirmed  ${explorerUrl}`;
   
